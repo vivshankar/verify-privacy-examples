@@ -39,7 +39,7 @@ main = async () => {
         // filter the list based on those that can be consented
         let items = [];
         for (const assess of decision.assessment) {
-            if (!assess.requiresConsent) {
+            if (!assess.result[0].requiresConsent) {
                 console.log(`DEBUG: Requires no consent: ${JSON.stringify(assess)}`)
                 continue;
             }
