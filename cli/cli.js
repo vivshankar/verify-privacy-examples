@@ -39,17 +39,21 @@ main = async () => {
         // filter the list based on those that can be consented
         let items = [];
         for (const assess of decision.assessment) {
-            if (!assess.result[0].requiresConsent) {
-                console.log(`DEBUG: Requires no consent: ${JSON.stringify(assess)}`)
-                continue;
+            for (const iaresult of assess.result) {
+                const attrId = (assess.attributeId) ? assess.attributeId : iaresult.attributeId;
+                const assessLog = `${assess.purposeId},${attrId},${assess.accessTypeId},${JSON.stringify(iaresult)}`;
+                if (!iaresult.requiresConsent) {
+                    console.log(`DEBUG: Requires no consent: `, assessLog)
+                    continue;
+                }
+    
+                console.log(`DEBUG: Requires consent: ${assessLog}`)
+                items.push({
+                    purposeId: assess.purposeId,
+                    attributeId: attrId,
+                    accessTypeId: assess.accessTypeId
+                })
             }
-
-            console.log(`DEBUG: Requires consent: ${JSON.stringify(assess)}`)
-            items.push({
-                purposeId: assess.purposeId,
-                attributeId: assess.attributeId,
-                accessTypeId: assess.accessTypeId
-            })
         }
 
         // metadata used to render a user consent page
