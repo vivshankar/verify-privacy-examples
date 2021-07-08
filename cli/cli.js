@@ -2,7 +2,7 @@
 const OAuthContext = require('ibm-verify-sdk').OAuthContext;
 
 // Import the Privacy SDK
-const Privacy = require('verify-dpcm-sdk-js');
+const Privacy = require('verify-privacy-sdk-js');
 
 // Import readline for user input
 const readline = require('readline');

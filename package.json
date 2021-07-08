@@ -4,7 +4,9 @@
   "description": "Example apps to demonstrate integration with IBM Security Verify Privacy & Consent",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node cli/cli.js",
+    "start": "node cli/cli.js"
   },
   "repository": {
     "type": "git",
@@ -25,6 +27,6 @@
     "dotenv": "^10.0.0",
     "ibm-verify-sdk": "^2.0.5",
     "readline": "^1.3.0",
-    "verify-dpcm-sdk-js": "github:vivshankar/verify-dpcm-sdk-js#main"
+    "verify-privacy-sdk-js": "github:vivshankar/verify-privacy-sdk-js#main"
   }
 }
